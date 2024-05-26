@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Restaurant app</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <h1 class="head">Список ресторанов:</h1>
+
+  <ul class="restaurants"></ul>
+
+  <script>
+    const restaurants = document.getElementsByClassName("restaurants")[0]
+
+    const MOCK_RESTAURANTS = [
+      {
+        name: 'Старик и море',
+        rating: 4.95,
+        comments: [
+          {
+            userName: 'Mikeee',
+            text: 'Best restaurant',
+            rating: 4.95
+          },
+          {
+            userName: 'Ruslan',
+            text: 'Хороший рестран, но кладут помидоры((',
+            rating: 4.5
+          },
+          {
+            userName: 'ArtemP',
+            text: 'WOOOOOOW SO GOOOOD AND TASTY!!!',
+            rating: 5.00
+          }
+        ]
+      },
+      {
+        name: 'Борщ',
+        rating: 3.48,
+        comments: [
+          {
+            userName: 'Mikeee',
+            text: 'FOOOO',
+            rating: 3.0
+          },
+          {
+            userName: 'Antor',
+            text: 'Хотелось бы получше',
+            rating: 4
+          }
+        ]
+      }
+    ]
+
+    function createRestaurant({ name, rating, comments }) {
+      const li = document.createElement('li')
+      li.className = 'restaurant'
+
+      li.innerHTML = `
+        <h2>${name}</h2><span>${rating}</span>
+      `
+
+      return li
+    }
+
+    MOCK_RESTAURANTS.forEach((restaurant) => restaurants.appendChild(createRestaurant(restaurant)))
+
+    console.log('restaurants', restaurants)
+  </script>
+</body>
+</html>
